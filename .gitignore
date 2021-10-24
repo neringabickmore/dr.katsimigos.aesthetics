@@ -1,4 +1,9 @@
 .gitpod.yml
 .gitpod.dockerfile
 .theia
-.env
+.venv
+*.sqlite3
+*.pyc
+__pycache__
+env.py
+.vscode
