@@ -97,3 +97,53 @@ p {
     color: var(--black);
     font-size: 2rem;
 }
+
+/* Footer */
+.footer {
+    background-color: var(--jet);
+    color: var(--white);
+    padding: 3rem 2rem 2rem 2rem;
+}
+
+.footer h4 {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2vw;
+}
+
+.footer li {
+    list-style-type: none;
+}
+
+.footer a i {
+    color: var(--white);
+    width: 32px;
+    height: 32px;
+    padding: 1.2rem 0;
+    font-size: 2.5rem;
+}
+
+.footer-link {
+    font-family: var(--header-font);
+    font-size: 1.4rem;
+    color: var(--white);
+}
+
+.footer-contact-info p {
+    font-size: 1.4rem;
+}
+
+.footer-nav .nav-link:hover {
+    color: var(--yellow);
+}
+
+.footer a i:hover {
+    color: var(--yellow);
+}
+.footer a i:hover {
+    text-decoration: none;
+}
+#admin-link {
+    opacity: .5;
+}
