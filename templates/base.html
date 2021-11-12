@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- core meta -->
+    {% include 'includes/head/meta.html' %}
+    <!-- extra meta -->
+    {% block extra_meta %}
+    {% endblock %}
+    <!-- core css -->
+    {% include 'includes/head/stylesheets.html' %}
+    <!-- extra css -->
+    {% block extra_css %}
+    {% endblock %}
+    <!-- onload JS-->
+    {% block onloadjs %}
+    {% endblock %}
+
+    <title>Dr. Anna-Maria Katsimigos - Aesthetics</title>
+</head>
+
+<body>
+    {% include 'includes/loader.html' %}
+    <!-- header -->
+    {% include 'includes/layout/header.html' %}
+    <!-- extra header -->
+    {% block extra_header %}
+    {% endblock %}
+    <!-- go up button -->
+    <button id="goUpBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+    <!-- content -->
+
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+            {% with message.level as level %}
+                {% if level == 40 %}
+                    {% include 'includes/toasts/toast-error.html' %}
+                {% elif level == 30 %}
+                    {% include 'includes/toasts/toast-warning.html' %}
+                {% elif level == 25 %}
+                    {% include 'includes/toasts/toast-success.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast-info.html' %}
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+    {% include 'includes/layout/footer.html' %}
+    <!-- postload JS -->
+    {% block postloadjs %}
+    {% include 'includes/postload-scripts/scripts.html' %}
+    {% endblock %}
+</body>
+
+</html>
