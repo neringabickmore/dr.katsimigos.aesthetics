@@ -50,3 +50,50 @@ p {
     font-size: 1.4rem;
     text-align: justify;
 }
+
+/* Header - Site Navigation */
+.navbar, 
+#mobile-nav {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#main-nav,
+.nav-link-header {
+    color: var(--black);
+    background-color: var(--white);
+}
+
+#mobile-nav,
+.dropdown-menu-header,
+#mobile-nav .nav-link-header,
+.dropdown-menu-header li a {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.nav-link-header {
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-link-header,
+.dropdown-menu-header li a {
+    font-size: 1.8rem;
+    font-family: var(--header-font);
+    letter-spacing: 0.1vw;
+}
+
+.nav-link-header:focus,
+.nav-link-header:hover,
+.dropdown-menu-header li a:focus,
+.dropdown-menu-header li a:hover {
+    color: var(--yellow)!important;
+    text-decoration: none;
+}
+
+.fa-grip-lines {
+    color: var(--black);
+    font-size: 2rem;
+}
