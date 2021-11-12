@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat&display=swap');
+
+:root {
+    /* fonts */
+    --header-font: 'Abel', sans-serif;
+    --main-font: 'Monserrat', sans-serif;
+
+    /* color palette */
+    --black: #242423;
+    --yellow: #F9B737;
+    --blue: #14213D;
+    --white: #ffffff;
+    --jet: #333533;
+
+    /* box shadows */
+    --dark-large-box-shadow: 6px 6px 12px var(--jet);
+    --dark-small-box-shadow: 1px 1px 7px 0 var(--jet);
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--white);
+    color: var(--black);
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: var(--main-font);
+    font-size: calc(1.4rem + .2vw);
+}
+
+.body-container {
+    min-height: 75vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5, 
+h6 {
+    font-family: var(--header-font);
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.4rem;
+    text-align: justify;
+}
