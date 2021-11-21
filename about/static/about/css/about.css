@@ -1,0 +1,46 @@
+.contact a {
+    text-decoration: none;
+    color: var(--black);
+}
+.contact a:hover {
+    color: var(--yellow)
+}
+
+.hr-style {
+    border: 1px solid var(--black);
+    opacity: 1;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@media (max-width: 574px) {
+    .hr-style{
+        width: 100%;
+        border: 1px solid var(--black);
+        opacity: 1;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@media (min-height: 576px) {
+    .carousel-item {
+       height: 30rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .carousel-item {
+        height: 45rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .carousel-item {
+        height: 55rem;
+    }
+}
