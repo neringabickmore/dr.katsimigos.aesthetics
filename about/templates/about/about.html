@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'about/css/about.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid carousel-container">
+    <!-- About Images Row -->
+    <div class="row align-items-center py-3 my-1">
+        <div class="col-sm-12 px-2">
+            <!-- Carousel -->
+            <div id="aboutIntervalCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Image 1 -->
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="https://images.unsplash.com/photo-1556942040-df93bd3bdd19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
+                            class="d-block w-100" alt="...">
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="carousel-item" data-bs-interval="10000">
+                        <img src="https://images.unsplash.com/photo-1617289013503-56557cbc4d9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                            class="d-block w-100" alt="...">
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="carousel-item" data-bs-interval="10000">
+                        <img src="https://images.unsplash.com/photo-1549153052-247abe00d6d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                            class="d-block w-100" alt="...">
+                    </div>
+                    <!-- Image 4 -->
+                    <div class="carousel-item" data-bs-interval="10000">
+                        <img src="https://images.unsplash.com/photo-1602677526061-1dec14a6cbb6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+                            class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#aboutIntervalCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#aboutIntervalCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container body-container">
+    <!-- About Row -->
+    <div class="row  align-items-center py-5 px-2" id="about-row">
+        <div class="col-sm-12 py-xs-0 py-2">
+            <h2 class="mt-0 pb-3 text-center text-sm-left"><strong>About </strong> </h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Nunc aliquet bibendum enim facilisis gravida neque. Quis commodo
+                odio aenean sed. Augue interdum velit euismod in pellentesque massa placerat duis ultricies.
+                Lobortis elementum nibh tellus molestie. Eget mauris pharetra et ultrices neque. Gravida dictum
+                fusce ut placerat orci nulla. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Dis
+                parturient montes nascetur ridiculus mus mauris vitae. Mauris pellentesque pulvinar pellentesque
+                habitant morbi tristique senectus. Sed egestas egestas fringilla phasellus faucibus scelerisque
+                eleifend donec pretium. Accumsan tortor posuere ac ut consequat semper viverra. Nisi quis
+                eleifend quam adipiscing vitae proin sagittis nisl. Sed vulputate mi sit amet mauris commodo
+                quis imperdiet.
+
+            </p>
+            <p>
+                Consequat nisl vel pretium lectus quam id. Bibendum at varius vel pharetra vel turpis nunc eget
+                lorem. Feugiat pretium nibh ipsum consequat nisl. Imperdiet dui accumsan sit amet nulla facilisi
+                morbi. Egestas integer eget aliquet nibh praesent tristique magna sit. Nisi porta lorem mollis
+                aliquam ut porttitor leo a. In mollis nunc sed id semper risus in hendrerit gravida. Volutpat
+                consequat mauris nunc congue. Est ultricies integer quis auctor elit sed. Viverra accumsan in
+                nisl nisi. Aliquet bibendum enim facilisis gravida neque convallis a. Tempor orci eu lobortis
+                elementum. Imperdiet dui accumsan sit amet nulla. Egestas fringilla phasellus faucibus
+                scelerisque eleifend donec pretium. Egestas sed tempus urna et.
+
+            </p>
+            <!-- { for about in about_section } -->
+            <!-- <p class="text-center text-sm-left"> {{ about.description }}</p> -->
+            <!-- { if request.user.is_superuser } -->
+            <!-- Edit button-->
+            <!-- <div class="text-center text-sm-right">
+                        <a class="btn edit-btn my-2 col-12 col-sm-2" href="">Edit<span
+                                class="icon p-2">
+                                <i class="far fa-edit" aria-hidden="true"></i>
+                            </span></a>
+                    </div> -->
+            <!-- { endif } -->
+            <!-- { endfor } -->
+        </div>
+    </div>
+    <div class="hr-style"></div>
+    <!-- Contact Row -->
+    <div class="row  align-items-center pt-2 pb-5 px-2" id="contact-row">
+        <div class="col-sm-12 py-xs-0 pb-2">
+            <h2 class="mt-4 pb-3 text-center text-sm-left" id="contact-us"><strong>Contact </strong> </h2>
+            <h3 class="my-1 pb-3 text-center text-sm-left"><strong>consultations & bookings </strong> </h3>
+            <p class="text-center"><i class="fas fa-phone p-2"></i> 07903 1799 961</p>
+            <p class="text-center contact"><a href="mailto:dr.katsimigos@aesthetics.com">
+                    <i class="fas fa-envelope p-2"></i> dr.katsimigos@aesthetics.com</a></p>
+            <p class="text-center contact"><a href="https://www.instagram.com/dr.katsimigos/" rel="noopener noreferrer"
+                    target="_blank" aria-label="Find us on Instagram"><i class="fab fa-instagram p-2"></i>Instagram</a>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

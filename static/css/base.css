@@ -1,16 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat&family=Roboto+Slab&display=swap');
 
 :root {
     /* fonts */
     --header-font: 'Abel', sans-serif;
-    --main-font: 'Monserrat', sans-serif;
+    --main-font: 'Montserrat', sans-serif;
+    --logo-font: 'Roboto Slab', serif;
 
     /* color palette */
     --black: #242423;
-    --yellow: #F9B737;
-    --blue: #14213D;
-    --white: #ffffff;
     --jet: #333533;
+    --white: #ffffff;
+    --grey: #FAF9FA;
+    --tan: #CCB096;
+    --cyan: #CBF3F0;
+    --pink: #FCD5CE;
 
     /* box shadows */
     --dark-large-box-shadow: 6px 6px 12px var(--jet);
@@ -33,14 +36,14 @@ body {
 }
 
 .body-container {
-    min-height: 75vh;
+    min-height: 50vh;
 }
 
 h1,
 h2,
 h3,
 h4,
-h5, 
+h5,
 h6 {
     font-family: var(--header-font);
     text-transform: uppercase;
@@ -49,4 +52,162 @@ h6 {
 p {
     font-size: 1.4rem;
     text-align: justify;
+}
+
+/* header - logo */
+#logo {
+    display: block;
+    margin-top: 2rem;
+    height: 25vh;
+    width: 100%;
+}
+
+#header-logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    height: 100%;
+    max-width: 99%;
+}
+
+.header-logo {
+    font-family: var(--logo-font);
+    color: var(--tan);
+}
+
+/* Header - Site Navigation */
+#header {
+    position: sticky!important;
+    top: 0;
+    background-color: var(--white);
+    z-index: 99999;
+}
+
+.navbar,
+#mobile-nav {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+#main-nav,
+.nav-link-header {
+    color: var(--black);
+    background-color: var(--white);
+}
+
+#mobile-nav,
+.dropdown-menu-header,
+#mobile-nav .nav-link-header,
+.dropdown-menu-header li a {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.nav-link-header {
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav-link-header,
+.dropdown-menu-header li a {
+    font-size: 1.8rem;
+    font-family: var(--header-font);
+    letter-spacing: 0.1vw;
+}
+
+.nav-link-header:focus,
+.nav-link-header:hover,
+.dropdown-menu-header li a:focus,
+.dropdown-menu-header li a:hover {
+    color: var(--tan) !important;
+    text-decoration: none;
+}
+
+.fa-grip-lines {
+    color: var(--black);
+    font-size: 2rem;
+}
+
+/** Go Up button styling **/
+#goUpBtn {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    z-index: 99;
+    border: 3px solid var(--jet);
+    outline: none;
+    background-color: var(--white);
+    cursor: pointer;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+#goUpBtn:hover {
+    background-color: var(--white);
+}
+
+.fa-chevron-up {
+    font-size: 3rem;
+    color: var(--blue);
+    border-radius: 50%;
+}
+
+.fa-chevron-up:hover {
+    color: var(--red);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--jet);
+    color: var(--white);
+    padding: 3rem 2rem 2rem 2rem;
+}
+
+.footer h4 {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2vw;
+}
+
+.footer li {
+    list-style-type: none;
+}
+
+.footer a i {
+    color: var(--white);
+    width: 32px;
+    height: 32px;
+    padding: 1.2rem 0;
+    font-size: 2.5rem;
+}
+
+.footer-link {
+    font-family: var(--header-font);
+    font-size: 1.4rem;
+    color: var(--white);
+}
+
+.footer-contact-info p {
+    font-size: 1.4rem;
+}
+
+.footer-nav .nav-link:hover {
+    color: var(--tan);
+}
+
+.footer a i:hover {
+    color: var(--tan);
+}
+
+.footer a i:hover {
+    text-decoration: none;
+}
+
+#admin-link {
+    opacity: .5;
 }
