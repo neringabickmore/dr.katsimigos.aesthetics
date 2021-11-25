@@ -186,14 +186,10 @@ p {
     font-size: 2.5rem;
 }
 
-.footer-link {
+.footer-link, .footer-contact-info p {
     font-family: var(--header-font);
     font-size: 1.4rem;
     color: var(--white);
-}
-
-.footer-contact-info p {
-    font-size: 1.4rem;
 }
 
 .footer-nav .nav-link:hover {
