@@ -46,3 +46,9 @@
     text-transform: capitalize;
     color: var(--black);
 }
+
+/* back link*/
+
+.back-link a {
+    color: var(--tan);
+}
