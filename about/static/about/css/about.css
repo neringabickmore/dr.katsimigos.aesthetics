@@ -2,6 +2,7 @@
     text-decoration: none;
     color: var(--black);
 }
+
 .contact a:hover {
     color: var(--tan)
 }
@@ -15,8 +16,12 @@
     margin-left: -15px;
 }
 
+img {
+    object-fit: cover !important;
+}
+
 @media (max-width: 574px) {
-    .hr-style{
+    .hr-style {
         width: 100%;
         border: 1px solid var(--black);
         opacity: 1;
@@ -28,19 +33,49 @@
 }
 
 @media (min-height: 576px) {
-    .carousel-item {
-       height: 30rem;
+
+    .carousel-item,
+    img {
+        height: 35rem;
+    }
+
+    img {
+        object-position: 100% 60% !important;
     }
 }
 
 @media (min-width: 768px) {
-    .carousel-item {
+
+    .carousel-item,
+    img {
         height: 45rem;
+    }
+
+    img {
+        object-position: 100% 45% !important;
     }
 }
 
 @media (min-width: 992px) {
-    .carousel-item {
+
+    .carousel-item,
+    img {
         height: 55rem;
+    }
+
+    img {
+        object-position: 100% 43% !important;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .carousel-item,
+    img {
+        height: 85rem;
+    }
+
+    img {
+        object-position: 100% 45% !important;
     }
 }
