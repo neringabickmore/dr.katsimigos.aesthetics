@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'pricelist/css/pricelist.css' %}" type="text/css">
+{% endblock %}
+
+
+{% block content %}
+<div class="container treatments-container body-container">
+    <div class="row align-items-center py-3 my-1">
+        <div class="col-sm-12 py-xs-0 py-2">
+            <h1 class="mt-0 pb-3 text-center">pricelist</h1>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
