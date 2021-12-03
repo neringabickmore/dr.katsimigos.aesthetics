@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '462f-2a02-c7d-ec07-6000-a4c3-f5bb-cd2c-813d.ngrok.io']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '462f-2a02-c7d-ec07-6000-a4c3-f5bb-cd2c-813d.ngrok.io', 'dr-katsimigos-aesthetics.herokuapp.com']
 
 
 # Application definition
