@@ -1,1 +1,1 @@
-gunicorn art_i_al.wsgi:application
+gunicorn drKatsimigosEsthetics.wsgi:application
