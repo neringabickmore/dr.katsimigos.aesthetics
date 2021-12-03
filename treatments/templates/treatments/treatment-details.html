@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'treatments/css/treatments.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<!-- Treatment details and descriptions -->
+<div class="container body-container">
+    <!-- Treatment title -->
+    <div class="row align-items-center py-3 my-1">
+        <div class="col-sm-12 py-xs-0 py-2">
+            <p class="back-link"><a href="/treatments"><i class="fas fa-angle-left px-3"></i>All Treatments</a></p>
+            <h1 class="mt-0 pb-3 text-center">treatment A</h1>
+        </div>
+    </div>
+    <!-- Description -->
+    <div class="row align-items-center py-3 my-1">
+        <div class="col-sm-12 py-xs-0 p-4">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Nunc aliquet bibendum enim facilisis gravida neque. Quis commodo
+                odio aenean sed. Augue interdum velit euismod in pellentesque massa placerat duis ultricies.
+                Lobortis elementum nibh tellus molestie. Eget mauris pharetra et ultrices neque. Gravida dictum
+                fusce ut placerat orci nulla. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Dis
+                parturient montes nascetur ridiculus mus mauris vitae. Mauris pellentesque pulvinar pellentesque
+                habitant morbi tristique senectus. Sed egestas egestas fringilla phasellus faucibus scelerisque
+                eleifend donec pretium. Accumsan tortor posuere ac ut consequat semper viverra. Nisi quis
+                eleifend quam adipiscing vitae proin sagittis nisl. Sed vulputate mi sit amet mauris commodo
+                quis imperdiet.
+            </p>
+        </div>
+    </div>
+    <!-- Before/After pictures -->
+    <div class="row align-items-center py-3 my-1">
+        <div class="col-sm-6 col-12 align-self-center p-4 treatment-photo-container">
+            <p class="before-after-txt">before</p>
+            <img class="card-img-top img-fluid" loading="lazy"
+                src="https://www.harleystreetinjectables.com/wp-content/uploads/2019/11/FillerCorrection.jpg" alt="">
+        </div>
+        <div class="col-sm-6 col-12 align-self-center p-4 treatment-photo-container">
+            <p class="before-after-txt">after</p>
+            <img class="card-img-top img-fluid" loading="lazy"
+                src="https://www.harleystreetinjectables.com/wp-content/uploads/2019/11/FillerCorrection.jpg" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}

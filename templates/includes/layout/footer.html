@@ -1,20 +1,18 @@
 <footer class="container-fluid footer">
     <div class="row no-gutters">
-        <!-- quicklinks -->
-        <div class="col-sm-4 text-center">
-            <h4>quicklinks</h4>
-            {% include 'includes/layout/footer-includes/quicklinks.html' %}
-        </div>
-        <!-- social links -->
-        {% include 'includes/layout/footer-includes/social-links.html' %}
         <!-- contact -->
         {% include 'includes/layout/footer-includes/contact.html' %}
+        <!-- social links -->
+        {% include 'includes/layout/footer-includes/social-links.html' %}
+        <!-- quicklinks -->
+        {% include 'includes/layout/footer-includes/quicklinks.html' %}
     </div>
     <!-- copyright -->
-    <div class="row no-gutters mt-3">
+    <div class="row no-gutters mt-5">
         <div class="col-sm-12 text-center">
-            <small>Copyright &copy; Dr. Anna-Maria Katsimigos| Aesthetics | {% now 'Y' %} </small>
+            <p class="text-center">
+                <small>&copy;{% now 'Y' %} | Aestehetics by Dr. Katsimigos | Site by: Neringa Bickmore</small>
+            </p>
         </div>
     </div>
-
 </footer>
