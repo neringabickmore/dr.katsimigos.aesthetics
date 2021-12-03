@@ -1,1 +1,1 @@
-gunicorn drKatsimigosEsthetics.wsgi:application
+web: gunicorn drKatsimigosEsthetics.wsgi:application
