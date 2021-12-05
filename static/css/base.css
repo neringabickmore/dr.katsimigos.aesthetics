@@ -12,8 +12,6 @@
     --white: #ffffff;
     --grey: #FAF9FA;
     --tan: #CCB096;
-    --cyan: #CBF3F0;
-    --pink: #FCD5CE;
 
     /* box shadows */
     --dark-large-box-shadow: 6px 6px 12px var(--jet);
@@ -223,4 +221,64 @@ p {
 
 #admin-link {
     opacity: .5;
+}
+
+/* general button styling */
+.btn {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    border-radius: 0;
+    color: var(--white);
+    background-color: var(--tan);
+    box-shadow: var(--dark-small-box-shadow);
+}
+
+.btn:hover {
+    color: var(--white);
+    background-color: var(--jet)!important;
+    -webkit-box-shadow: var(--dark-small-box-shadow);
+    box-shadow: var(--dark-small-box-shadow);
+}
+
+/* All forms on the site */
+.form-control:focus {
+    -webkit-box-shadow: var(--dark-small-box-shadow) !important;
+    box-shadow: var(--dark-small-box-shadow) !important;
+}
+
+.field-styling {
+    border-radius: 0;
+    border: 1px solid var(--jet);
+    color: var(--black);
+    font-size: 1.6rem;
+    margin: .5rem 0 3rem 0;
+    font-family: var(--main-font);
+}
+
+.form-group label {
+    font-family: var(--header-font);
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--jet);
+}
+
+/* Bootstrap toasts */
+.message-container {
+    position: fixed;
+    top: 200px;
+    right: 18px;
+    z-index: 99999999999;
+}
+.custom-toast {
+    border-radius: 0!important;
+    border-top: 0!important;
+}
+.toast-body {
+    background-color: var(--tan);
+    color: var(--white);
+    font-size: 1.4rem;
+}
+
+.custom-toast .d-flex {
+    background-color: var(--tan);
 }

@@ -52,42 +52,21 @@
     <!-- About Row -->
     <div class="row  align-items-center py-5 px-2" id="about-row">
         <div class="col-sm-12 py-xs-0 py-2">
-            <h2 class="mt-0 pb-3 text-center text-sm-left"><strong>About </strong> </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Nunc aliquet bibendum enim facilisis gravida neque. Quis commodo
-                odio aenean sed. Augue interdum velit euismod in pellentesque massa placerat duis ultricies.
-                Lobortis elementum nibh tellus molestie. Eget mauris pharetra et ultrices neque. Gravida dictum
-                fusce ut placerat orci nulla. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Dis
-                parturient montes nascetur ridiculus mus mauris vitae. Mauris pellentesque pulvinar pellentesque
-                habitant morbi tristique senectus. Sed egestas egestas fringilla phasellus faucibus scelerisque
-                eleifend donec pretium. Accumsan tortor posuere ac ut consequat semper viverra. Nisi quis
-                eleifend quam adipiscing vitae proin sagittis nisl. Sed vulputate mi sit amet mauris commodo
-                quis imperdiet.
-
-            </p>
-            <p>
-                Consequat nisl vel pretium lectus quam id. Bibendum at varius vel pharetra vel turpis nunc eget
-                lorem. Feugiat pretium nibh ipsum consequat nisl. Imperdiet dui accumsan sit amet nulla facilisi
-                morbi. Egestas integer eget aliquet nibh praesent tristique magna sit. Nisi porta lorem mollis
-                aliquam ut porttitor leo a. In mollis nunc sed id semper risus in hendrerit gravida. Volutpat
-                consequat mauris nunc congue. Est ultricies integer quis auctor elit sed. Viverra accumsan in
-                nisl nisi. Aliquet bibendum enim facilisis gravida neque convallis a. Tempor orci eu lobortis
-                elementum. Imperdiet dui accumsan sit amet nulla. Egestas fringilla phasellus faucibus
-                scelerisque eleifend donec pretium. Egestas sed tempus urna et.
-
-            </p>
-            <!-- { for about in about_section } -->
-            <!-- <p class="text-center text-sm-left"> {{ about.description }}</p> -->
-            <!-- { if request.user.is_superuser } -->
-            <!-- Edit button-->
-            <!-- <div class="text-center text-sm-right">
-                        <a class="btn edit-btn my-2 col-12 col-sm-2" href="">Edit<span
-                                class="icon p-2">
-                                <i class="far fa-edit" aria-hidden="true"></i>
-                            </span></a>
-                    </div> -->
-            <!-- { endif } -->
-            <!-- { endfor } -->
+            {% for about in about_section %}
+            <h2 class="mt-0 pb-3 text-center text-sm-left"><strong>{{ about.name }}</strong> </h2>
+            <p> {{ about.description1 }}</p>
+            <p> {{ about.description2 }}</p>
+            <p> {{ about.description3 }}</p>
+            {% if request.user.is_superuser %}
+            <!-- Edit button -->
+            <div class="text-center text-sm-right">
+                <a class="btn my-2 col-12 col-sm-2" href="{% url 'edit_about' about.id %}">Edit<span
+                        class="icon p-2">
+                        <i class="far fa-edit" aria-hidden="true"></i>
+                    </span></a>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
     <div class="hr-style"></div>
