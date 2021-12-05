@@ -246,7 +246,7 @@ p {
     box-shadow: var(--dark-small-box-shadow) !important;
 }
 
-.field-styling {
+.field-styling, .form-control {
     border-radius: 0;
     border: 1px solid var(--jet);
     color: var(--black);

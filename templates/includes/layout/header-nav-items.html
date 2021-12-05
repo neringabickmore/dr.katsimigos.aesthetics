@@ -27,11 +27,11 @@
         <li><a href="" class="dropdown-item ">Treatment 6<a></li>
     </ul>
     <!-- Price List -->
-    <li class="nav-item dropdown">
-        <a class="nav-link-header" role="button" id="priceDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-           pricelist
-        </a>
+<li class="nav-item dropdown">
+    <a class="nav-link-header" role="button" id="priceDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        pricelist
+    </a>
     <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="pricelistDropdown">
         <!-- all prices -->
         <li><a href="/pricelist" class="dropdown-item ">All prices</a></li>
@@ -49,3 +49,16 @@
         contact
     </a>
 </li>
+{% if user.is_superuser %}
+<!-- Superuser management options -->
+<li class="nav-item dropdown">
+    <a class="nav-link-header" role="button" id="managementDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Management
+    </a>
+    <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="managementDropdown">
+        <!-- logout-->
+        <li><a href="/accounts/logout" class="dropdown-item ">Logout</a></li>
+
+    </ul>
+    {% endif %}
