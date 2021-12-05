@@ -13,6 +13,8 @@ class AboutForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['description2'].required = False
+        self.fields['description3'].required = False
         labels = {
             'name': 'Section title',
             'description1': 'Paragraph 1',
