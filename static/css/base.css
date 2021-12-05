@@ -53,6 +53,23 @@ p {
     font-size: 1.4rem;
     text-align: justify;
 }
+/* Loader... */
+.loader-overlay-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999999;
+    background-color: var(--white);
+}
+
+.loader {
+    background-image: url("https://res.cloudinary.com/dktjdf0v1/image/upload/v1638711548/Aesthetics%20by%20Dr%20Katsimigos/808_1_weg7hf.gif"); 
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
 
 /* header - logo */
 #logo {
