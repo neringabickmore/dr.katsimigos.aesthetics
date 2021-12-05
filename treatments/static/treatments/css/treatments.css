@@ -24,7 +24,7 @@
 
 .treatment-photo-overlay {
     transition: .5s ease;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -34,21 +34,25 @@
 }
 
 .treatment-photo-container:hover .treatment-photo {
-    opacity: .2;
+    opacity: .4;
 }
 
 .treatment-photo-container:hover .treatment-photo-overlay {
     opacity: 1; 
 }
 
-.title {
+.treatment-title {
     font-size: 28px;
     text-transform: capitalize;
+    color: var(--white);
+    font-family: var(--header-font);
+}
+.treatment-photo-container:hover .treatment-title {
     color: var(--black);
+    font-weight: bolder;
 }
 
 /* back link*/
-
 .back-link a {
     color: var(--tan);
 }
