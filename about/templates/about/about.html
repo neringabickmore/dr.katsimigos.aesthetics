@@ -54,9 +54,9 @@
         <div class="col-sm-12 py-xs-0 py-2">
             {% for about in about_section %}
             <h2 class="mt-0 pb-3 text-center text-sm-left"><strong>{{ about.name }}</strong> </h2>
-            <p> {{ about.description1 }}</p>
-            <p> {{ about.description2 }}</p>
-            <p> {{ about.description3 }}</p>
+            <p class="mx-3 mx-sm-0">{{ about.description1 }}</p>
+            <p class="mx-3 mx-sm-0"> {{ about.description2 }}</p>
+            <p class="mx-3 mx-sm-0"> {{ about.description3 }}</p>
             {% if request.user.is_superuser %}
             <!-- Edit button -->
             <div class="text-center text-sm-right">
