@@ -28,25 +28,15 @@
     {% endblock %}
     <!-- go up button -->
     <button id="goUpBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
-    <!-- content -->
-
+    <!-- messages container if messages exist -->
     {% if messages %}
     <div class="message-container">
         {% for message in messages %}
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast-error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast-warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast-success.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast-info.html' %}
-                {% endif %}
-            {% endwith %}
+        {% include 'includes/toasts/toast.html' %}
         {% endfor %}
     </div>
     {% endif %}
+    <!-- content -->
     {% block content %}
     {% endblock %}
     {% include 'includes/layout/footer.html' %}
