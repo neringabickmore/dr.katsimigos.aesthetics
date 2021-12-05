@@ -34,7 +34,7 @@ def edit_about(request, about_id):
         about_form = AboutForm(request.POST, instance=about_section)
         if about_form.is_valid():
             about_form.save()
-            messages.success(request, 'Section edited successfully!')
+            messages.success(request, 'The section updated successfully!')
             return redirect(reverse('view_about'))
         else:
             messages.error(request, 'Hmmm... something went wrong!')

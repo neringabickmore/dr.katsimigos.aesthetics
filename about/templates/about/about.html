@@ -60,7 +60,7 @@
             {% if request.user.is_superuser %}
             <!-- Edit button -->
             <div class="text-center text-sm-right">
-                <a class="btn edit-btn my-2 col-12 col-sm-2" href="{% url 'edit_about' about.id %}">Edit<span
+                <a class="btn my-2 col-12 col-sm-2" href="{% url 'edit_about' about.id %}">Edit<span
                         class="icon p-2">
                         <i class="far fa-edit" aria-hidden="true"></i>
                     </span></a>
