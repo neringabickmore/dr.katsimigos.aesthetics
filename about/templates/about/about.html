@@ -73,15 +73,27 @@
     <!-- Contact Row -->
     <div class="row  align-items-center pt-2 pb-5 px-2" id="contact-row">
         <div class="col-sm-12 py-xs-0 pb-2">
-            <h2 class="mt-4 pb-3 text-center text-sm-left" id="contact-us"><strong>Contact </strong> </h2>
-            <h3 class="my-1 pb-3 text-center text-sm-left"><strong>consultations & bookings </strong> </h3>
-            <p class="text-center"><i class="fas fa-phone p-2"></i> 07903 1799 961</p>
-            <p class="text-center contact"><a href="mailto:dr.katsimigos@aesthetics.com">
-                    <i class="fas fa-envelope p-2"></i> dr.katsimigos@aesthetics.com</a></p>
-            <p class="text-center contact"><a href="https://www.instagram.com/dr.katsimigos/" rel="noopener noreferrer"
+            {% for contact in contact_section %}
+            <h2 class="mt-4 pb-3 text-center text-sm-left" id="contact-us"><strong>{{ contact.header }}</strong> </h2>
+            <h3 class="my-1 pb-3 text-center text-sm-left"><strong>{{ contact.subheader }} </strong> </h3>
+            <p class="text-center"><i class="fas fa-phone p-2"></i> {{ contact.telephone_number }}</p>
+            <p class="text-center contact"><a href="mailto:{{ contact.email_address }}">
+                    <i class="fas fa-envelope p-2"></i> {{ contact.email_address }}</a></p>
+            {% if contact.instagram_handle %}
+            <p class="text-center contact"><a href="{{ contact.instagram_handle }}" rel="noopener noreferrer"
                     target="_blank" aria-label="Find us on Instagram"><i class="fab fa-instagram p-2"></i>Instagram</a>
             </p>
-
+            {% endif %}
+            {% if request.user.is_superuser %}
+            <!-- Edit button -->
+            <div class="text-center text-sm-right">
+                <a class="btn my-2 col-12 col-sm-2" href="{% url 'edit_contact' contact.id %}">Edit<span
+                        class="icon p-2">
+                        <i class="far fa-edit" aria-hidden="true"></i>
+                    </span></a>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>
