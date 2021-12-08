@@ -31,7 +31,7 @@ def view_about(request):
 
 
 @login_required
-def upload_photo(request):
+def upload_carousel_photo(request):
 
     if not request.user.is_superuser:
         messages.error(request, 'Functionality available to the site owner only.')
