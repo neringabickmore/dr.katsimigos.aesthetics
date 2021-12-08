@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import About, Contact
+from .models import About, Contact, CarouselPhoto
 
 class AboutAdmin(admin.ModelAdmin):
     """
@@ -29,5 +29,16 @@ class ContactAdmin(admin.ModelAdmin):
     )
 
 
+class CarouselPhotoAdmin(admin.ModelAdmin):
+    """
+    Carousel Photo admin
+    """
+
+    list_display = (
+        'title',
+        'image',
+    )
+
 admin.site.register(About, AboutAdmin)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(CarouselPhoto, CarouselPhotoAdmin)

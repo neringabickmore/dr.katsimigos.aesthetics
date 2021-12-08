@@ -1,5 +1,6 @@
 from django import forms
-from .models import About, Contact
+from .widgets import CustomClearableFileInput
+from .models import About, Contact, CarouselPhoto
 
 
 class AboutForm(forms.ModelForm):
@@ -60,3 +61,31 @@ class ContactForm(forms.ModelForm):
         self.fields['telephone_number'].widget.attrs['class'] = 'field-styling'
         self.fields['email_address'].widget.attrs['class'] = 'field-styling'
         self.fields['instagram_handle'].widget.attrs['class'] = 'field-styling'
+
+
+class CarouselPhotoForm (forms.ModelForm):
+
+    class Meta:
+        model = CarouselPhoto
+        fields = '__all__'
+    
+    image = forms.ImageField(
+        label='Image', required=False,
+        widget=CustomClearableFileInput)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    
+        labels = {
+            'title': 'Title with no spaces',
+            'image': 'Upload photo',
+        }
+        for field in self.fields:
+            self.fields[field].label = labels[field]
+            self.fields['title'].widget.attrs['class'] = 'field-styling'
+            self.fields['image'].widget.attrs['class'] = 'field-styling'
+            self.fields['title'].widget.attrs['data-toggle'] = 'tooltip'
+            self.fields['title'].widget.attrs['data-placement'] = 'top'
+            self.fields['title'].widget.attrs['title'] = 'No spaces \
+                or special characters, use - for word separation'
