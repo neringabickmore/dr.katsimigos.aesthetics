@@ -11,11 +11,14 @@ def view_about(request):
 
     about_section = About.objects.all()
     contact_section = Contact.objects.all()
+    # Required to show contact details in the footer
+    contact_details = Contact.objects.all()
     
     template = 'about/about.html'
     context = {
         'about_section': about_section,
         'contact_section': contact_section,
+        'contact_details': contact_details,
     }
     
     return render (request, template, context)
@@ -62,7 +65,7 @@ def edit_contact(request, contact_id):
         return redirect(reverse('view_about'))
 
     contact_section = get_object_or_404(Contact, pk=contact_id)
-    
+    # Required to show contact details in the footer
     contact_details = Contact.objects.all()
 
     if request.method == 'POST':
@@ -81,7 +84,7 @@ def edit_contact(request, contact_id):
     context = {
         'contact_form': contact_form,
         'contact_section': contact_section,
-        'contact_details': contact_details
+        'contact_details': contact_details,
     }
 
     return render(request, template, context)
