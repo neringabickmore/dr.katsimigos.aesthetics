@@ -62,7 +62,9 @@ def edit_contact(request, contact_id):
         return redirect(reverse('view_about'))
 
     contact_section = get_object_or_404(Contact, pk=contact_id)
-        
+    
+    contact_details = Contact.objects.all()
+
     if request.method == 'POST':
         contact_form = ContactForm(request.POST, instance=contact_section)
         if contact_form.is_valid():
@@ -79,6 +81,7 @@ def edit_contact(request, contact_id):
     context = {
         'contact_form': contact_form,
         'contact_section': contact_section,
+        'contact_details': contact_details
     }
 
     return render(request, template, context)
