@@ -2,8 +2,12 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .models import About, Contact
-from .forms import AboutForm, ContactForm
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+from .models import About, Contact, CarouselPhoto
+from .forms import AboutForm, ContactForm, CarouselPhotoForm
 
 
 # Create your views here.
@@ -13,15 +17,48 @@ def view_about(request):
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
+    all_carousel_photos = CarouselPhoto.objects.all()
     
     template = 'about/about.html'
     context = {
         'about_section': about_section,
         'contact_section': contact_section,
         'contact_details': contact_details,
+        'all_carousel_photos': all_carousel_photos,
     }
     
     return render (request, template, context)
+
+
+@login_required
+def upload_carousel_photo(request):
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Functionality available to the site owner only.')
+        return redirect(reverse('view_about'))
+
+    # Required to show contact details in the footer
+    contact_details = Contact.objects.all()
+
+
+    if request.method == 'POST':
+        upload_photo_form = CarouselPhotoForm(request.POST, request.FILES)
+        if upload_photo_form.is_valid():
+            upload_photo_form.save()
+            messages.success(request, 'Successfully added a new photo to the carousel!')
+            return redirect('view_about')
+        else:
+            messages.error(request, 'Failed to add a photo. Please ensure the form is valid.') 
+
+    else:
+        upload_photo_form = CarouselPhotoForm()
+
+    template = 'about/upload-photo.html'
+    context = {
+        'upload_photo_form': upload_photo_form,
+        'contact_details': contact_details,
+    }
+    return render(request, template, context)
 
 
 @login_required
@@ -59,7 +96,6 @@ def edit_about(request, about_id):
 def edit_contact(request, contact_id):
     """ Edit contact section  """
 
-    
     if not request.user.is_superuser:
         messages.error(request, 'Functionality available to the site owner only.')
         return redirect(reverse('view_about'))
