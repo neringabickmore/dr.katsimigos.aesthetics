@@ -8,7 +8,7 @@ class TreatmentDetailsForm (forms.ModelForm):
     """
     class Meta:
         model = TreatmentDetails
-        fields = ['treatment_name', 'description', 'before_picture', 'after_picture']
+        fields = ['treatment_name', 'description', 'before_picture', 'after_picture', 'display']
     
     before_picture = forms.ImageField(
         label='Before picture', required=False,
@@ -26,6 +26,7 @@ class TreatmentDetailsForm (forms.ModelForm):
             'description': 'Treatment Description',
             'before_picture': 'Upload: Before picture',
             'after_picture': 'Upload: After picture',
+            'display': 'Box ticked if you want to display this treatment.'
         }
 
         for field in self.fields:
@@ -34,4 +35,5 @@ class TreatmentDetailsForm (forms.ModelForm):
             self.fields['description'].widget.attrs['class'] = 'field-styling'
             self.fields['before_picture'].widget.attrs['class'] = 'field-styling'
             self.fields['after_picture'].widget.attrs['class'] = 'field-styling'
+            self.fields['display'].widget.attrs['class'] = 'field-styling'
 
