@@ -1,9 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from .models import TreatmentDetails
+from .forms import TreatmentDetailsForm
 
 from about.models import Contact
 
-# Create your views here.
+
 def view_treatments(request):
+    """
+    view all treatments
+    """
 
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
@@ -20,6 +31,9 @@ def view_treatments(request):
 
 
 def treatment_details(request):
+    """
+    View specific treatment details
+    """
 
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
@@ -33,3 +47,38 @@ def treatment_details(request):
     }
     
     return render (request, template, context)
+
+
+@login_required
+def add_new_treatment(request):
+    """
+    Superuser can add a new treatment  
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Functionality available to the site owner only.')
+        return redirect(reverse('view_treatments'))
+
+    contact_section = Contact.objects.all()
+    # Required to show contact details in the footer
+    contact_details = Contact.objects.all()
+
+    if request.method == 'POST':
+        add_new_treatment_form = TreatmentDetailsForm(request.POST, request.FILES)
+        if add_new_treatment_form.is_valid():
+            add_new_treatment_form.save()
+            messages.success(request, 'Successfully added a new treatment to the database!')
+            return redirect('view_treatments')
+        else:
+            messages.error(request, 'Failed to add a new treatment. Please ensure the form is valid.') 
+
+    else:
+        
+        add_new_treatment_form = TreatmentDetailsForm()
+
+    template = 'treatments/add-new-treatment.html'
+    context = {
+        'add_new_treatment_form': add_new_treatment_form,
+        'contact_details': contact_details,
+        'contact_section': contact_section,
+    }
+    return render(request, template, context)
