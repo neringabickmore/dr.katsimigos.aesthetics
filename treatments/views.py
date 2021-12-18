@@ -110,7 +110,7 @@ def edit_treatment(request, treatment_id):
             messages.error(request, 'Hmmm... something went wrong!')
     else:
         treatment_details_form = TreatmentDetailsForm(instance=treatment_section)
-        messages.info(request, 'You are editing about section!')
+        messages.info(request, f'You are editing: {treatment_section.treatment_name}')
 
     template = 'treatments/edit-treatment.html'
     context = {
