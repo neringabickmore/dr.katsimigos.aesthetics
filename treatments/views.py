@@ -86,3 +86,36 @@ def add_new_treatment(request):
         'contact_section': contact_section,
     }
     return render(request, template, context)
+
+
+@login_required
+def edit_treatment(request, treatment_id):
+    """
+    Edit treatment details
+    """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Functionality available to the site owner only.')
+        return redirect(reverse('treatments'))
+
+    treatment_section = get_object_or_404(TreatmentDetails, pk=treatment_id)
+    
+    if request.method == 'POST':
+        treatment_details_form = TreatmentDetailsForm(request.POST, instance=treatment_section)
+        if treatment_details_form.is_valid():
+            treatment_details_form.save()
+            messages.success(request, 'The section updated successfully!')
+            return redirect(reverse('treatments'))
+        else:
+            messages.error(request, 'Hmmm... something went wrong!')
+    else:
+        treatment_details_form = TreatmentDetailsForm(instance=treatment_section)
+        messages.info(request, 'You are editing about section!')
+
+    template = 'treatments/edit-treatment.html'
+    context = {
+        'treatment_details_form': treatment_details_form,
+        'treatment_section': treatment_section
+    }
+
+    return render(request, template, context)
