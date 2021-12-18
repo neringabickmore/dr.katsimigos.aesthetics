@@ -12,81 +12,24 @@
             <h1 class="mt-0 pb-3 text-center">treatments</h1>
         </div>
     </div>
-    <!-- treatments grid-->
+    <!-- Treatments grid-->
     <div class="row align-items-center py-3 my-1">
-        <!-- treatment 1 -->
-        <div class="col-sm-6 col-12 treatment-photo-container align-self-center p-4">
-            <a href="/treatment-details" title="treatment 1" aria-label="treatment 1">
-                <img class="card-img-top img-fluid treatment-photo" loading="lazy"
-                    src="https://www.harleystreetinjectables.com/wp-content/uploads/2019/11/FillerCorrection.jpg"
-                    alt="">
-                <!-- overlay on hover -->
-                <div class="treatment-photo-overlay">
-                    <p class="treatment-title">treatment 1</p>
-                </div>
-            </a>
-        </div>
-        <!-- treatment 2 -->
-        <div class="col-sm-6 col-12 treatment-photo-container align-self-center p-4">
-            <a href="" title="treatment 2" aria-label="treatment 2">
-                <img class="card-img-top img-fluid treatment-photo" loading="lazy"
-                    src="https://www.harleystreetinjectables.com/wp-content/uploads/2019/11/Prophilo.jpg"
-                    alt="">
-                <!-- overlay on hover -->
-                <div class="treatment-photo-overlay">
-                    <p class="treatment-title">treatment 2</p>
-                </div>
-            </a>
-        </div>
-        
-        <!-- treatment 3 -->
-        <div class="col-sm-6 col-12 treatment-photo-container align-self-center p-4">
-            <a href="" title="treatment 3" aria-label="treatment 3">
-                <img class="card-img-top img-fluid treatment-photo" loading="lazy"
-                    src="https://www.harleystreetinjectables.com/wp-content/uploads/2019/11/PRP.jpg"
-                    alt="">
-                <!-- overlay on hover -->
-                <div class="treatment-photo-overlay">
-                    <p class="treatment-title">treatment 3</p>
-                </div>
-            </a>
-        </div>
-        <!-- treatment 4 -->
-        <div class="col-sm-6 col-12 treatment-photo-container align-self-center p-4">
-            <a href="" title="treatment 4" aria-label="treatment 4">
-                <img class="card-img-top img-fluid treatment-photo" loading="lazy"
-                    src="https://www.harleystreetinjectables.com/wp-content/uploads/2020/07/wow-instafacial.jpg"
-                    alt="">
-                <!-- overlay on hover -->
-                <div class="treatment-photo-overlay">
-                    <p class="treatment-title">treatment 4</p>
-                </div>
-            </a>
-        </div>
-        <!-- treatment 5 -->
-        <div class="col-sm-6 col-12 treatment-photo-container align-self-center p-4">
-            <a href="" title="treatment 5" aria-label="treatment 5">
-                <img class="card-img-top img-fluid treatment-photo" loading="lazy"
-                    src="https://www.harleystreetinjectables.com/wp-content/uploads/2019/11/DermalFiller.jpg"
-                    alt="">
-                <!-- overlay on hover -->
-                <div class="treatment-photo-overlay">
-                    <p class="treatment-title">treatment 5</p>
-                </div>
-            </a>
-        </div>
-        <!-- treatment 6 -->
-        <div class="col-sm-6 col-12 treatment-photo-container align-self-center p-4">
-            <a href="" title="treatment 6" aria-label="treatment 6">
-                <img class="card-img-top img-fluid treatment-photo" loading="lazy"
-                    src="https://www.harleystreetinjectables.com/wp-content/uploads/2019/11/Botox.jpg"
-                    alt="">
-                <!-- overlay on hover -->
-                <div class="treatment-photo-overlay">
-                    <p class="treatment-title">treatment 6</p>
-                </div>
-            </a>
-        </div>
+        {% for TreatmentDetails in all_treatments %}
+            {% if  TreatmentDetails.display %}
+            <div class="col-sm-6 col-12 treatment-photo-container align-self-center p-4">
+                <a href="{% url 'treatment_details' TreatmentDetails.treatment_name %}"
+                    title="{{ TreatmentDetails.treatment_name}} details"
+                    aria-label="see full details about {{ TreatmentDetails.treatment_name}}">
+                    <img class="card-img-top img-fluid treatment-photo" loading="lazy"
+                        src="{{ TreatmentDetails.after_picture.url }}" alt="{{ TreatmentDetails.treatment_name}}">
+                    <!-- overlay on hover -->
+                    <div class="treatment-photo-overlay">
+                        <p class="treatment-title">{{ TreatmentDetails.treatment_name}}</p>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
