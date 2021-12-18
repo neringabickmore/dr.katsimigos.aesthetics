@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'treatments/css/treatments.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5 body-container">
+    <div class="row">
+        <div class="col-12 col-md-6 px-4">
+            <!-- Title -->
+            <h1 class="my-4 ml-2 text-uppercase">edit {{ treatment.treatment_name }} details</h1>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Edit about section -->
+        <div class="col-12 col-md-6 px-4">
+            <form method="POST" action="{% url 'edit_treatment' treatment_section.id %}" class="form mb-2">
+                {% csrf_token %}
+                {{ treatment_details_form | crispy }}
+                <div class="text-right">
+                    <!-- cancel button -->
+                    <a class="btn" href="{% url 'treatments' %}"><span class="icon p-2">
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        </span>Cancel</a>
+                    <!-- update button -->
+                    <button class="btn" type="submit">Update<span class="icon p-2">
+                            <i class="fas fa-check" aria-hidden="true"></i>
+                        </span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

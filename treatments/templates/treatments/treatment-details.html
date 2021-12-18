@@ -15,6 +15,14 @@
             <h1 class="mt-0 pb-3 text-center">{{ treatment.treatment_name}}</h1>
         </div>
     </div>
+    {% if request.user.is_superuser %}
+            <!-- Edit button -->
+            <div class="text-center text-sm-right">
+                <a class="btn my-2 col-12 col-sm-6" href="{% url 'edit_treatment' treatment.id %}">Edit treatment details<span class="icon p-2">
+                        <i class="far fa-edit" aria-hidden="true"></i>
+                    </span></a>
+            </div>
+            {% endif %}
     <!-- Description -->
     <div class="row align-items-center py-3 my-1">
         <div class="col-sm-12 py-xs-0 p-4">
