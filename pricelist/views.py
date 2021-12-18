@@ -3,7 +3,7 @@ from django.shortcuts import render
 from about.models import Contact
 
 # Create your views here.
-def view_pricelist(request):
+def pricelist(request):
     
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer

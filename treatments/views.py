@@ -11,7 +11,7 @@ from .forms import TreatmentDetailsForm
 from about.models import Contact
 
 
-def view_treatments(request):
+def treatments(request):
     """
     view all treatments
     """
@@ -60,7 +60,7 @@ def add_new_treatment(request):
     """
     if not request.user.is_superuser:
         messages.error(request, 'Functionality available to the site owner only.')
-        return redirect(reverse('view_treatments'))
+        return redirect(reverse('treatments'))
 
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
@@ -71,7 +71,7 @@ def add_new_treatment(request):
         if add_new_treatment_form.is_valid():
             add_new_treatment_form.save()
             messages.success(request, 'Successfully added a new treatment to the database!')
-            return redirect('view_treatments')
+            return redirect('treatments')
         else:
             messages.error(request, 'Failed to add a new treatment. Please ensure the form is valid.') 
 
