@@ -15,26 +15,29 @@ def view_treatments(request):
     """
     view all treatments
     """
-
+    
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
+    # Required to view all treatments that are activated in the db
+    all_treatments = TreatmentDetails.objects.all()
     
     template = 'treatments/treatments.html'
 
     context = {
         'contact_section': contact_section,
         'contact_details': contact_details,
+        'all_treatments': all_treatments,
     }
     
     return render (request, template, context)
 
 
-def treatment_details(request):
+def treatment_details(request, name):
     """
     View specific treatment details
     """
-
+    treatment = get_object_or_404(TreatmentDetails, treatment_name=name)
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
@@ -44,6 +47,7 @@ def treatment_details(request):
     context = {
         'contact_section': contact_section,
         'contact_details': contact_details,
+        'treatment': treatment,
     }
     
     return render (request, template, context)
