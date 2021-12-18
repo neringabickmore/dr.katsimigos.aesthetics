@@ -20,27 +20,6 @@ img {
     object-fit: cover !important;
 }
 
-/* Photo upload form */
-.field-styling {
-    border-radius: 0;
-    border: 1px solid var(--jet);
-    font-size: 1.6rem;
-}
-
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-file input[type="file"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
 
 @media (max-width: 574px) {
     .hr-style {

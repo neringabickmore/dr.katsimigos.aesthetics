@@ -67,7 +67,7 @@ class CarouselPhotoForm (forms.ModelForm):
 
     class Meta:
         model = CarouselPhoto
-        fields = '__all__'
+        fields = ['title', 'image']
     
     image = forms.ImageField(
         label='Image', required=False,
@@ -75,14 +75,15 @@ class CarouselPhotoForm (forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-    
+ 
         labels = {
             'title': 'Title with no spaces',
-            'image': 'Upload photo',
+            'image': 'Upload: Photo for the carousel',
         }
+
         for field in self.fields:
             self.fields[field].label = labels[field]
+
             self.fields['title'].widget.attrs['class'] = 'field-styling'
             self.fields['image'].widget.attrs['class'] = 'field-styling'
             self.fields['title'].widget.attrs['data-toggle'] = 'tooltip'
