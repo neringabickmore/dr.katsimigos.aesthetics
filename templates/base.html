@@ -37,8 +37,10 @@
     </div>
     {% endif %}
     <!-- content -->
+    <main>
     {% block content %}
     {% endblock %}
+    </main>
     {% include 'includes/layout/footer.html' %}
     <!-- postload JS -->
     {% block postloadjs %}
