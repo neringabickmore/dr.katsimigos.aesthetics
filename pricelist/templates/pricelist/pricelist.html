@@ -10,12 +10,12 @@
 <div class="container treatments-container body-container">
     <!-- title -->
     <div class="row py-3 my-1">
-        <div class="col py-xs-0 py-2">
-            <h1 class="mt-0 pb-3 text-center">pricelist</h1>
+        <div class="col py-xs-0">
+            <h1 class="mt-0 text-center">pricelist</h1>
         </div>
     </div>
     <!-- short description -->
-    <div class="row align-items-center py-3 my-1">
+    <div class="row align-items-center my-1">
         <div class="col-sm-12 py-xs-0 p-4">
             <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                 labore et dolore magna aliqua. Nunc aliquet bibendum enim facilisis gravida neque. Quis commodo
@@ -24,61 +24,69 @@
                 quis imperdiet. </p>
         </div>
     </div>
+    <!-- pricelist -->
     <div class="row align-items-center justify-content-center py-3 my-1">
-        <!-- Treatment A -->
-        <div class="col-sm-12 py-xs-0 p-4">
-            <h2 class="text-center" id="treatment-1-price"> Treatment A </h2>
-            <!-- Short desciption about treatment A -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Nunc aliquet bibendum enim facilisis gravida neque. Quis commodo
-                odio aenean sed.</p>
+        <!-- Individual treatment section -->
+        {% for TreatmentDetails in all_treatments %}
+        {% if  TreatmentDetails.display_treatment %}
+        <!-- Treatment name:{{ TreatmentDetails.treatment_name }} -->
+        <div class="col-sm-12 py-xs-0 px-4 py-2" id="{{ TreatmentDetails.treatment_name }}">
+            <h2 class=" text-center"> {{ TreatmentDetails.treatment_name }} </h2>
+            {% if request.user.is_superuser %}
+            <!-- display management buttons for superuser -->
+            <div class="col-12 text-center my-3">
+                <!-- Edit button -->
+                <a class="btn my-2 col-12 col-sm-4" href="{% url 'edit_treatment' TreatmentDetails.id %}">edit
+                    details<span class="icon p-2">
+                        <i class="far fa-edit" aria-hidden="true"></i>
+                    </span></a>
+                <!-- delete treatment -->
+                <a class="btn my-2 col-12 col-sm-4" href="{% url 'delete_treatment' TreatmentDetails.id %}"
+                    aria-label="delete treatment">
+                    Delete treatment<span class="icon p-2">
+                        <i class="fas fa-trash" aria-hidden="true"></i>
+                    </span></a>
+                </span></a>
+            </div>
+            {% endif %}
+
+            <!-- Short description for {{ TreatmentDetails.treatment_name }} -->
+            <p>{{ TreatmentDetails.treatment_price_description }}</p>
         </div>
-        <!-- Prices for treatment A -->
+        <!-- Pricelist for: {{ TreatmentDetails.treatment_name }} -->
         <div class="col-sm-4 py-xs-0 p-4">
             <table class="table table-striped text-center">
                 <tbody>
                     <tr>
-                        <td>Option A</td>
-                        <td>Price A</td>
+                        <td>{{ TreatmentDetails.price_name_a }}</td>
+                        <td>£{{ TreatmentDetails.price_a }}</td>
                     </tr>
+                    {% if TreatmentDetails.price_name_b %}
+                    <!-- only display if price exists -->
                     <tr>
-                        <td>Option B</td>
-                        <td>Price B</td>
+                        <td>{{ TreatmentDetails.price_name_b }}</td>
+                        <td>£{{ TreatmentDetails.price_b }}</td>
                     </tr>
+                    {% endif %}
+                    {% if TreatmentDetails.price_name_c %}
+                    <!-- only display if price exists -->
                     <tr>
-                        <td>Option C</td>
-                        <td>Price C</td>
+                        <td>{{ TreatmentDetails.price_name_c }}</td>
+                        <td>£{{ TreatmentDetails.price_c }}</td>
                     </tr>
+                    {% endif %}
+                    {% if TreatmentDetails.price_name_d %}
+                    <!-- only display if price exists -->
+                    <tr>
+                        <td>{{ TreatmentDetails.price_name_d }}</td>
+                        <td>£{{ TreatmentDetails.price_d }}</td>
+                    </tr>
+                    {% endif %}
                 </tbody>
             </table>
         </div>
-        <!-- Treatment B -->
-        <div class="col-sm-12 py-xs-0 p-4">
-            <h2 class="text-center" id="treatment-2-price"> Treatment B </h2>
-            <!-- Short desciption about treatment B -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Nunc aliquet bibendum enim facilisis gravida neque. Quis commodo
-                odio aenean sed.</p>
-        </div>
-        <!-- Prices for treatment B -->
-        <div class="col-sm-4 py-xs-0 p-4">
-            <table class="table table-striped text-center">
-                <tbody>
-                    <tr>
-                        <td>Option A</td>
-                        <td>Price A</td>
-                    </tr>
-                    <tr>
-                        <td>Option B</td>
-                        <td>Price B</td>
-                    </tr>
-                    <tr>
-                        <td>Option C</td>
-                        <td>Price C</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        {% endif %}
+        {% endfor %}
     </div>
     <!-- Contact us link -->
     <div class="row align-items-center py-3 my-1">
@@ -86,7 +94,6 @@
             <h4><a href="/#contact-us">contact us</a> to find out more</h4>
         </div>
     </div>
-
 </div>
 
 {% endblock %}

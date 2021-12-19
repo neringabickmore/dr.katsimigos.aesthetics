@@ -20,21 +20,20 @@
         {% endif %}
         {% endfor %}
     </ul>
-    <!-- Price List -->
+<!-- Price List -->
 <li class="nav-item dropdown">
     <a class="nav-link-header" role="button" id="priceDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        pricelist
+        aria-expanded="false">pricelist
     </a>
     <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="pricelistDropdown">
         <!-- all prices -->
-        <li><a href="/pricelist" class="dropdown-item ">All prices</a></li>
-        <!-- treatment 1 -->
-        <li><a href="/pricelist/#treatment-1-price" class="dropdown-item ">Treatment 1</a></li>
-        <!-- treatment 2 -->
-        <li><a href="/pricelist/#treatment-2-price" class="dropdown-item ">Treatment 2<a></li>
-        <!-- treatment 3 -->
-        <li><a href="/pricelist/#treatment-3-price" class="dropdown-item ">Treatment 3</a></li>
+        <li><a href="{% url 'pricelist' %}" class="dropdown-item ">All prices</a></li>
+        {% for TreatmentDetails in all_treatments %}
+        {% if  TreatmentDetails.display_treatment %}
+        <!-- {{ TreatmentDetails.treatment_name }} -->
+        <li><a href="{% url 'pricelist' %}#{{ TreatmentDetails.treatment_name }}" class="dropdown-item ">{{ TreatmentDetails.treatment_name }}</a></li>
+        {% endif %}
+        {% endfor %}
     </ul>
 </li>
 <!-- Contact -->
@@ -55,4 +54,5 @@
         <li><a href="/accounts/logout" class="dropdown-item ">Logout</a></li>
 
     </ul>
-    {% endif %}
+</li>
+{% endif %}
