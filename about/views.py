@@ -137,6 +137,23 @@ def edit_carousel_photo(request, carousel_photo_id):
 
 
 @login_required
+def delete_carousel_photo(request, carousel_photo_id):
+    """
+    Delete carousel photo
+    """
+    
+    if not request.user.is_superuser:
+        messages.error(request, 'Functionality available to the site owner only.')
+        return redirect(reverse('about'))
+
+    carousel_photo = get_object_or_404(CarouselPhoto, pk=carousel_photo_id)
+    carousel_photo.delete()
+    messages.info(request, 'You have successfully deleted carousel photo!')
+   
+    return redirect(reverse('carousel_photos'))
+
+
+@login_required
 def edit_about(request, about_id):
     """
     Edit about section
