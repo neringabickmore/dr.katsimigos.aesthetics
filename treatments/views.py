@@ -119,3 +119,19 @@ def edit_treatment(request, treatment_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_treatment(request, treatment_id):
+    """
+    Delete treatment
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Functionality available to the site owner only.')
+        return redirect(reverse('treatments'))
+
+    treatment = get_object_or_404(TreatmentDetails, pk=treatment_id)
+    treatment.delete()
+    messages.info(request, 'You have successfully deleted the treatment!')
+   
+    return redirect(reverse('treatments'))
