@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'about/css/about.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5 body-container">
+    <div class="row">
+        <div class="col-12 col-md-6 px-4">
+            <!-- Title -->
+            <h1 class="my-4 ml-2 text-uppercase">edit carousel photo</h1>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Edit carousel photo -->
+        <div class="col-12 col-md-6 px-4">
+            <form method="POST" action="{% url 'edit_carousel_photo' carousel_photo.id %}"
+                class="form mb-2 prod-mngmnt-form">
+                {% csrf_token %}
+                {{ carousel_photo_form | crispy }}
+                <div class="text-right mt-4">
+                    <!-- cancel button -->
+                    <a class="btn" href="{% url 'carousel_photos' %}"><span class="icon p-2">
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        </span>Cancel</a>
+                    <!-- update button -->
+                    <button class="btn" type="submit">Update<span class="icon p-2">
+                            <i class="fas fa-check" aria-hidden="true"></i>
+                        </span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
