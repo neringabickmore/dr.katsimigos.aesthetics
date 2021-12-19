@@ -93,7 +93,7 @@ p {
 
 /* Header - Site Navigation */
 #header {
-    position: sticky!important;
+    /* position: sticky!important; */
     top: 0;
     background-color: var(--white);
     z-index: 99999;

@@ -5,9 +5,9 @@ h4 a {
 h4 a:hover {
     color: var(--tan);
 }
-h2 {
+/* h2 {
     color: var(--tan);
-}
+} */
 .table-striped>tbody>tr:nth-of-type(odd)>* {
     --bs-table-accent-bg: var(--tan);
     color: var(--white)
