@@ -19,7 +19,7 @@ def treatments(request):
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
-    # Required to view all treatments that are activated in the db
+    # Required to view all treatments in the  navbar and on the template
     all_treatments = TreatmentDetails.objects.all()
     
     template = 'treatments/treatments.html'
@@ -37,7 +37,10 @@ def treatment_details(request, name):
     """
     View specific treatment details
     """
+
     treatment = get_object_or_404(TreatmentDetails, treatment_name=name)
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
@@ -48,6 +51,7 @@ def treatment_details(request, name):
         'contact_section': contact_section,
         'contact_details': contact_details,
         'treatment': treatment,
+        'all_treatments': all_treatments,
     }
     
     return render (request, template, context)
@@ -65,6 +69,8 @@ def add_new_treatment(request):
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
 
     if request.method == 'POST':
         add_new_treatment_form = TreatmentDetailsForm(request.POST, request.FILES)
@@ -84,6 +90,7 @@ def add_new_treatment(request):
         'add_new_treatment_form': add_new_treatment_form,
         'contact_details': contact_details,
         'contact_section': contact_section,
+        'all_treatments': all_treatments,
     }
     return render(request, template, context)
 
@@ -97,8 +104,12 @@ def edit_treatment(request, treatment_id):
     if not request.user.is_superuser:
         messages.error(request, 'Functionality available to the site owner only.')
         return redirect(reverse('treatments'))
-
+    
     treatment_section = get_object_or_404(TreatmentDetails, pk=treatment_id)
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
+    # Required to show contact details in the footer
+    contact_details = Contact.objects.all()
     
     if request.method == 'POST':
         treatment_details_form = TreatmentDetailsForm(request.POST, instance=treatment_section)
@@ -115,7 +126,26 @@ def edit_treatment(request, treatment_id):
     template = 'treatments/edit-treatment.html'
     context = {
         'treatment_details_form': treatment_details_form,
-        'treatment_section': treatment_section
+        'treatment_section': treatment_section,
+        'all_treatments': all_treatments,
+        'contact_details': contact_details,
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_treatment(request, treatment_id):
+    """
+    Delete treatment
+    """
+    
+    if not request.user.is_superuser:
+        messages.error(request, 'Functionality available to the site owner only.')
+        return redirect(reverse('treatments'))
+
+    treatment = get_object_or_404(TreatmentDetails, pk=treatment_id)
+    treatment.delete()
+    messages.info(request, 'You have successfully deleted the treatment!')
+   
+    return redirect(reverse('treatments'))

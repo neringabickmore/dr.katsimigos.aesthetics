@@ -7,17 +7,23 @@ import cloudinary.uploader
 import cloudinary.api
 
 from .models import About, Contact, CarouselPhoto
+from treatments.models import TreatmentDetails
 from .forms import AboutForm, ContactForm, CarouselPhotoForm
 
 
 # Create your views here.
-def view_about(request):
+def about(request):
+    """
+    View to show content on about page
+    """
 
     about_section = About.objects.all()
     contact_section = Contact.objects.all()
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
     all_carousel_photos = CarouselPhoto.objects.all()
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
     
     template = 'about/about.html'
     context = {
@@ -25,6 +31,7 @@ def view_about(request):
         'contact_section': contact_section,
         'contact_details': contact_details,
         'all_carousel_photos': all_carousel_photos,
+        'all_treatments': all_treatments,
     }
     
     return render (request, template, context)
@@ -32,13 +39,18 @@ def view_about(request):
 
 @login_required
 def upload_carousel_photo(request):
+    """
+    View to upload images to the carousel
+    """
 
     if not request.user.is_superuser:
         messages.error(request, 'Functionality available to the site owner only.')
-        return redirect(reverse('view_about'))
+        return redirect(reverse('about'))
 
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
 
 
     if request.method == 'POST':
@@ -46,7 +58,7 @@ def upload_carousel_photo(request):
         if upload_photo_form.is_valid():
             upload_photo_form.save()
             messages.success(request, 'Successfully added a new photo to the carousel!')
-            return redirect('view_about')
+            return redirect('about')
         else:
             messages.error(request, 'Failed to add a photo. Please ensure the form is valid.') 
 
@@ -57,26 +69,33 @@ def upload_carousel_photo(request):
     context = {
         'upload_photo_form': upload_photo_form,
         'contact_details': contact_details,
+        'all_treatments': all_treatments,
     }
     return render(request, template, context)
 
 
 @login_required
 def edit_about(request, about_id):
-    """ Edit about section  """
+    """
+    Edit about section
+    """
 
     if not request.user.is_superuser:
         messages.error(request, 'Functionality available to the site owner only.')
-        return redirect(reverse('view_about'))
+        return redirect(reverse('about'))
 
     about_section = get_object_or_404(About, pk=about_id)
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
+    # Required to show contact details in the footer
+    contact_details = Contact.objects.all()
     
     if request.method == 'POST':
         about_form = AboutForm(request.POST, instance=about_section)
         if about_form.is_valid():
             about_form.save()
             messages.success(request, 'The section updated successfully!')
-            return redirect(reverse('view_about'))
+            return redirect(reverse('about'))
         else:
             messages.error(request, 'Hmmm... something went wrong!')
     else:
@@ -87,6 +106,8 @@ def edit_about(request, about_id):
     context = {
         'about_form': about_form,
         'about_section': about_section,
+        'all_treatments': all_treatments,
+        'contact_details': contact_details,
     }
 
     return render(request, template, context)
@@ -94,22 +115,26 @@ def edit_about(request, about_id):
 
 @login_required
 def edit_contact(request, contact_id):
-    """ Edit contact section  """
+    """
+    Edit contact section 
+    """
 
     if not request.user.is_superuser:
         messages.error(request, 'Functionality available to the site owner only.')
-        return redirect(reverse('view_about'))
+        return redirect(reverse('about'))
 
     contact_section = get_object_or_404(Contact, pk=contact_id)
     # Required to show contact details in the footer
     contact_details = Contact.objects.all()
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
 
     if request.method == 'POST':
         contact_form = ContactForm(request.POST, instance=contact_section)
         if contact_form.is_valid():
             contact_form.save()
             messages.success(request, 'Contact section updated successfully!')
-            return redirect(reverse('view_about'))
+            return redirect(reverse('about'))
         else:
             messages.error(request, 'Hmmm... something went wrong!')
     else:
@@ -121,6 +146,7 @@ def edit_contact(request, contact_id):
         'contact_form': contact_form,
         'contact_section': contact_section,
         'contact_details': contact_details,
+        'all_treatments': all_treatments,
     }
 
     return render(request, template, context)

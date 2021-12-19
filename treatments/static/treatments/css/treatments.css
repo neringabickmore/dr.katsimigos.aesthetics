@@ -11,6 +11,8 @@
     left: 2.6rem;
     text-transform: capitalize;
     font-weight: bold;
+    background-color: var(--white);
+    padding: 0 2rem;
 }
 
 .treatment-photo {

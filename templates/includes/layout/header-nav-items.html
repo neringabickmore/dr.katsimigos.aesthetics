@@ -12,19 +12,13 @@
     </a>
     <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="treatmentsDropdown">
         <!-- all treatments -->
-        <li><a href="/treatments" class="dropdown-item ">All treatments</a></li>
-        <!-- treatment 1 -->
-        <li><a href="/treatment-details" class="dropdown-item ">Treatment 1</a></li>
-        <!-- treatment 2 -->
-        <li><a href="" class="dropdown-item ">Treatment 2<a></li>
-        <!-- treatment 3 -->
-        <li><a href="" class="dropdown-item ">Treatment 3</a></li>
-        <!-- treatment 4 -->
-        <li><a href="" class="dropdown-item ">Treatment 4<a></li>
-        <!-- treatment 5 -->
-        <li><a href="" class="dropdown-item ">Treatment 5</a></li>
-        <!-- treatment 6 -->
-        <li><a href="" class="dropdown-item ">Treatment 6<a></li>
+        <li><a href="{% url 'treatments' %}" class="dropdown-item ">All treatments</a></li>
+        {% for TreatmentDetails in all_treatments %}
+        {% if  TreatmentDetails.display %}
+        <!-- {{ TreatmentDetails.treatment_name }} -->
+        <li><a href="{% url 'treatment_details' TreatmentDetails.treatment_name %}" class="dropdown-item ">{{ TreatmentDetails.treatment_name }}</a></li>
+        {% endif %}
+        {% endfor %}
     </ul>
     <!-- Price List -->
 <li class="nav-item dropdown">
