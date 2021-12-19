@@ -19,7 +19,7 @@
             <form method="POST" action="{% url 'edit_treatment' treatment_section.id %}" class="form mb-2">
                 {% csrf_token %}
                 {{ treatment_details_form | crispy }}
-                <div class="text-right">
+                <div class="text-right mt-4">
                     <!-- cancel button -->
                     <a class="btn" href="{% url 'treatments' %}"><span class="icon p-2">
                             <i class="fas fa-chevron-left" aria-hidden="true"></i>
@@ -32,7 +32,6 @@
             </form>
         </div>
     </div>
-
 </div>
 
 {% endblock %}

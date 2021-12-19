@@ -24,7 +24,7 @@
     <!-- Treatments grid-->
     <div class="row align-items-center py-3 my-1">
         {% for TreatmentDetails in all_treatments %}
-        {% if  TreatmentDetails.display %}
+        {% if  TreatmentDetails.display_treatment %}
         <div class="col-sm-6 col-12 treatment-photo-container align-self-center p-4">
             <a href="{% url 'treatment_details' TreatmentDetails.treatment_name %}"
                 title="{{ TreatmentDetails.treatment_name}} details"
