@@ -208,21 +208,23 @@ p {
     font-size: 2.5rem;
 }
 
-.footer-link, .footer-contact-info p {
+.footer-link,
+.footer-link a,
+.footer-contact-info p {
     font-family: var(--header-font);
     font-size: 1.4rem;
     color: var(--white);
 }
 
-.footer-nav .nav-link:hover {
+.footer-nav .nav-link:hover
+.footer-link:hover, 
+.footer-link a:hover  {
     color: var(--tan);
 }
 
-.footer a i:hover {
+.footer a i:hover, 
+.footer-link:hover {
     color: var(--tan);
-}
-
-.footer a i:hover {
     text-decoration: none;
 }
 
