@@ -20,7 +20,7 @@
             <form method="POST" action="{% url 'add_new_treatment' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in add_new_treatment_form %}
-                {% if field.name != 'before_picture || after_picture' %}
+                {% if field.name != 'before_picture || after_picture || main_picture' %}
                 {{ field | as_crispy_field }}
                 {% else %}
                 {{ field }}

@@ -14,7 +14,7 @@
         <!-- all treatments -->
         <li><a href="{% url 'treatments' %}" class="dropdown-item ">All treatments</a></li>
         {% for TreatmentDetails in all_treatments %}
-        {% if  TreatmentDetails.display %}
+        {% if  TreatmentDetails.display_treatment %}
         <!-- {{ TreatmentDetails.treatment_name }} -->
         <li><a href="{% url 'treatment_details' TreatmentDetails.treatment_name %}" class="dropdown-item ">{{ TreatmentDetails.treatment_name }}</a></li>
         {% endif %}
