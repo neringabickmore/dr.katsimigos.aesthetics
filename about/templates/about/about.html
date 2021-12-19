@@ -38,15 +38,6 @@
     <!-- About Row -->
     <div class="row  align-items-center pt-2 pb-5 px-2" id="about-row">
         <div class="col-sm-12 py-xs-0 py-2 mb-4">
-            {% if request.user.is_superuser %}
-            <!-- Upload new photo to the carousel -->
-            <div class="text-center py-2">
-                <a class="btn my-2 col-12 col-lg-4 col-md-5" href="{% url 'upload_carousel_photo' %}">add new carousel
-                    photo<span class="icon p-2">
-                        <i class="fas fa-plus" aria-hidden="true"></i>
-                    </span></a>
-            </div>
-            {% endif %}
             {% for about in about_section %}
             <h2 class="mt-2 pb-3 text-center text-sm-left"><strong>{{ about.name }}</strong> </h2>
             <p class="mx-3 mx-sm-0">{{ about.description1 }}</p>

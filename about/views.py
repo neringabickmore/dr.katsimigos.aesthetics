@@ -11,7 +11,6 @@ from treatments.models import TreatmentDetails
 from .forms import AboutForm, ContactForm, CarouselPhotoForm
 
 
-# Create your views here.
 def about(request):
     """
     View to show content on about page
@@ -70,6 +69,31 @@ def upload_carousel_photo(request):
         'upload_photo_form': upload_photo_form,
         'contact_details': contact_details,
         'all_treatments': all_treatments,
+    }
+    return render(request, template, context)
+
+
+@login_required
+def carousel_photos(request):
+    """
+    View all pictures that are on the carousel
+    """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Functionality available to the site owner only.')
+        return redirect(reverse('about'))
+
+    all_carousel_photos = CarouselPhoto.objects.all()
+    # Required to show contact details in the footer
+    contact_details = Contact.objects.all()
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
+
+    template = 'about/carousel-photos.html'
+    context = {
+        'contact_details': contact_details,
+        'all_treatments': all_treatments,
+        'all_carousel_photos': all_carousel_photos,
     }
     return render(request, template, context)
 

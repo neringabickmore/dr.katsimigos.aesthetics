@@ -45,6 +45,16 @@
 </li>
 {% endif %}
 {% if user.is_superuser %}
+<!-- Carousel -->
+<li class="nav-item dropdown">
+    <a class="nav-link-header" role="button" id="carouseltDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        carousel
+    </a>
+    <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="carouselDropdown">
+        <li><a href="{% url 'upload_carousel_photo' %}" class="dropdown-item ">Add new photo</a></li>
+        <li><a href="{% url 'carousel_photos' %}" class="dropdown-item ">View all photos</a></li>
+    </ul>
 <!-- Superuser management options -->
 <li class="nav-item">
     <a class="nav-link-header" href="/accounts/logout">

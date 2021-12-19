@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load cloudinary %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'about/css/about.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mb-5 body-container">
+    <!-- Photo upload form -->
+    <div class="row">
+        <div class="col-12 text-center px-4">
+            <!-- Title -->
+            <h1 class="my-4 ml-2 text-uppercase">Pictures in the carousel</h1>
+            <h2><small> (in the about page)</small</h2>
+        </div>
+    </div>
+    <div class="row align-items-center py-3 my-1">
+        {% for CarouselPhoto in all_carousel_photos %}
+        <div class="col-sm-4 col-12 treatment-photo-container align-self-center p-4">
+            <div class="card">
+                <img src="{{ CarouselPhoto.image.url }}" style="height: auto;" class="card-img-top" alt="{{ CarouselPhoto.title }}">
+                <div class="card-body">
+                    <h3 class="card-title">{{ CarouselPhoto.title }}</h3>
+                    <a href="#" class="btn">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
