@@ -8,4 +8,5 @@ urlpatterns = [
     path('edit/contact/<int:contact_id>/', views.edit_contact, name='edit_contact'),
     path('upload/carousel/photo/', views.upload_carousel_photo, name='upload_carousel_photo'),
     path('carousel/photos/', views.carousel_photos, name= 'carousel_photos'),
+    path('edit/carousel/photo/<int:carousel_photo_id>/', views.edit_carousel_photo, name='edit_carousel_photo'),
 ]

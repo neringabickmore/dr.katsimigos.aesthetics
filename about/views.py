@@ -97,6 +97,44 @@ def carousel_photos(request):
     }
     return render(request, template, context)
 
+@login_required
+def edit_carousel_photo(request, carousel_photo_id):
+    """
+    Edit carousel photo
+    """
+    
+    if not request.user.is_superuser:
+        messages.error(request, 'Functionality available to the site owner only.')
+        return redirect(reverse('about'))
+
+    carousel_photo = get_object_or_404(CarouselPhoto, pk=carousel_photo_id)
+    # Required to view all treatments on the navbar
+    all_treatments = TreatmentDetails.objects.all()
+    # Required to show contact details in the footer
+    contact_details = Contact.objects.all()
+    
+    if request.method == 'POST':
+        carousel_photo_form = CarouselPhotoForm(request.POST, instance=carousel_photo)
+        if carousel_photo_form.is_valid():
+            carousel_photo_form.save()
+            messages.success(request, 'The carousel photo details updated successfully!')
+            return redirect(reverse('carousel_photos'))
+        else:
+            messages.error(request, 'Hmmm... something went wrong!')
+    else:
+        carousel_photo_form = CarouselPhotoForm(instance=carousel_photo)
+        messages.info(request, 'You are editing a carousel photo!')
+
+    template = 'about/edit-carousel-photo.html'
+    context = {
+        'carousel_photo_form': carousel_photo_form,
+        'carousel_photo': carousel_photo,
+        'all_treatments': all_treatments,
+        'contact_details': contact_details,
+    }
+
+    return render(request, template, context)
+
 
 @login_required
 def edit_about(request, about_id):
