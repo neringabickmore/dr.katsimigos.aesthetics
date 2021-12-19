@@ -36,23 +36,19 @@
         {% endfor %}
     </ul>
 </li>
+{% if not user.is_superuser %}
 <!-- Contact -->
 <li class="nav-item">
     <a class="nav-link-header" href="/#contact-us">
         contact
     </a>
 </li>
+{% endif %}
 {% if user.is_superuser %}
 <!-- Superuser management options -->
-<li class="nav-item dropdown">
-    <a class="nav-link-header" role="button" id="managementDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Management
+<li class="nav-item">
+    <a class="nav-link-header" href="/accounts/logout">
+        Logout
     </a>
-    <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="managementDropdown">
-        <!-- logout-->
-        <li><a href="/accounts/logout" class="dropdown-item ">Logout</a></li>
-
-    </ul>
 </li>
 {% endif %}

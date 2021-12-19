@@ -4,11 +4,11 @@
 {% block inner_content %}
 
 <!-- Page title -->
-<div class="col-sm-12 px-4">
-  <h3 class="my-4 text-center text-sm-left">{% trans "Login" %}</h3>
+<div class="col-12 px-4">
+  <h3 class="my-4 text-center">{% trans "Login" %}</h3>
 </div>
 <!-- Login form -->
-<div class="col-md-6 px-4">
+<div class="col-12 col-sm-6 px-4 text-center">
   <form class="login" method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
     {{ form.login | as_crispy_field }}
@@ -18,9 +18,9 @@
     {% endif %}
     <!-- Login button -->
     <button class="btn col-sm-12 my-4" type="submit">{% trans "Login" %}<span class="icon p-2"><i
-      class="fas fa-sign-in-alt"></i></span></button>
-      <!-- Reset password -->
-      <a class="btn col-sm-12" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+          class="fas fa-sign-in-alt"></i></span></button>
+    <!-- Reset password -->
+    <a class="btn col-sm-12" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   </form>
 </div>
 
