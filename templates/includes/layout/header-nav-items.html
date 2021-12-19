@@ -16,11 +16,12 @@
         {% for TreatmentDetails in all_treatments %}
         {% if  TreatmentDetails.display_treatment %}
         <!-- {{ TreatmentDetails.treatment_name }} -->
-        <li><a href="{% url 'treatment_details' TreatmentDetails.treatment_name %}" class="dropdown-item ">{{ TreatmentDetails.treatment_name }}</a></li>
+        <li><a href="{% url 'treatment_details' TreatmentDetails.treatment_name %}"
+                class="dropdown-item ">{{ TreatmentDetails.treatment_name }}</a></li>
         {% endif %}
         {% endfor %}
     </ul>
-<!-- Price List -->
+    <!-- Price List -->
 <li class="nav-item dropdown">
     <a class="nav-link-header" role="button" id="priceDropdown" data-bs-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">pricelist
@@ -31,7 +32,8 @@
         {% for TreatmentDetails in all_treatments %}
         {% if  TreatmentDetails.display_treatment %}
         <!-- {{ TreatmentDetails.treatment_name }} -->
-        <li><a href="{% url 'pricelist' %}#{{ TreatmentDetails.treatment_name }}" class="dropdown-item ">{{ TreatmentDetails.treatment_name }}</a></li>
+        <li><a href="{% url 'pricelist' %}#{{ TreatmentDetails.treatment_name }}"
+                class="dropdown-item ">{{ TreatmentDetails.treatment_name }}</a></li>
         {% endif %}
         {% endfor %}
     </ul>
@@ -52,13 +54,24 @@
         carousel
     </a>
     <ul class="dropdown-menu-header dropdown-menu border-0" aria-labelledby="carouselDropdown">
-        <li><a href="{% url 'upload_carousel_photo' %}" class="dropdown-item ">Add new photo</a></li>
-        <li><a href="{% url 'carousel_photos' %}" class="dropdown-item ">View all photos</a></li>
+        <li><a href="{% url 'carousel_photos' %}" class="dropdown-item">all photos</a></li>
+        <li><a href="{% url 'upload_carousel_photo' %}" class="dropdown-item ">add new photo</a></li>
     </ul>
-<!-- Superuser management options -->
+</li>
+<!-- edit contact details -->
+{% if contact_section %}
+<li class="nav-item">
+    {% for contact in contact_details %}
+    <a class="nav-link-header" href="{% url 'edit_contact' contact.id %}">
+        contact details
+    </a>
+    {% endfor %}
+</li>
+{% endif %}
+<!-- logout -->
 <li class="nav-item">
     <a class="nav-link-header" href="/accounts/logout">
-        Logout
+        logout
     </a>
 </li>
 {% endif %}
