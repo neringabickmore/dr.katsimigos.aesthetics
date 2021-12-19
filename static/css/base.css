@@ -146,6 +146,10 @@ p {
 
 .fa-grip-lines {
     color: var(--black);
+    font-size: 3rem;
+}
+
+.fa-caret-down {
     font-size: 2rem;
 }
 
@@ -170,7 +174,7 @@ p {
 
 .fa-chevron-up {
     font-size: 3rem;
-    color: var(--blue);
+    color: var(--jet);
     border-radius: 50%;
 }
 
