@@ -17,11 +17,18 @@
     <!-- short description -->
     <div class="row align-items-center my-1">
         <div class="col-sm-12 py-xs-0 p-4">
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Nunc aliquet bibendum enim facilisis gravida neque. Quis commodo
-                odio aenean sed. Augue interdum velit euismod in pellentesque massa placerat duis ultricies.
-                Lobortis elementum nibh tellus molestie.
-                quis imperdiet. </p>
+            {% for PricelistIntro in pricelist_intro_section %}
+            <p>{{ PricelistIntro.description }}</p>
+            {% if request.user.is_superuser %}
+            <!-- Edit button -->
+            <div class="text-center text-sm-right">
+                <a class="btn my-2 col-12 col-lg-4 col-md-5"
+                    href="{% url 'edit_pricelist_intro' PricelistIntro.id %}">Edit intro section<span class="icon p-2">
+                        <i class="far fa-edit" aria-hidden="true"></i>
+                    </span></a>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
     <!-- pricelist -->

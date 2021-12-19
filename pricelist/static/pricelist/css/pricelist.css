@@ -19,3 +19,10 @@ h4 a:hover {
 td {
     font-family: var(--header-font);
 }
+
+.btn {
+    background-color: var(--jet)!important;
+}
+.btn:hover {
+    background-color: var(--tan)!important;
+}
