@@ -56,9 +56,10 @@
                 </span></a>
             </div>
             {% endif %}
-
             <!-- Short description for {{ TreatmentDetails.treatment_name }} -->
+            {%  if TreatmentDetails.treatment_price_description %}
             <p>{{ TreatmentDetails.treatment_price_description }}</p>
+            {% endif %}
         </div>
         <!-- Pricelist for: {{ TreatmentDetails.treatment_name }} -->
         <div class="col-sm-4 py-xs-0 p-4">

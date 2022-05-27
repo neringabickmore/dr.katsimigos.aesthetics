@@ -39,18 +39,24 @@
         </div>
     </div>
     <!-- Before/After pictures -->
+    
     <div class="row align-items-center py-3 my-1">
         <div class="col-sm-6 col-12 align-self-center p-4 treatment-photo-container">
+            {% if treatment.before_picture %}
             <p class="before-after-txt">before</p>
             <img class="card-img-top img-fluid" loading="lazy" src="{{ treatment.before_picture.url }}"
                 alt="before picture">
+            {% endif %}
         </div>
         <div class="col-sm-6 col-12 align-self-center p-4 treatment-photo-container">
+            {% if treatment.after_picture %}
             <p class="before-after-txt">after</p>
             <img class="card-img-top img-fluid" loading="lazy" src="{{ treatment.after_picture.url }}"
                 alt="after picture">
+            {% endif %}
         </div>
     </div>
+
 
 </div>
 {% endblock %}
