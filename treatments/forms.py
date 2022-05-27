@@ -24,6 +24,14 @@ class TreatmentDetailsForm (forms.ModelForm):
             'price_c',
             'price_name_d',
             'price_d',
+            'price_name_e',
+            'price_e',
+            'price_name_f',
+            'price_f',
+            'price_name_g',
+            'price_g',
+            'price_name_h',
+            'price_h',
         ]
     
     main_picture = forms.ImageField(
@@ -57,6 +65,14 @@ class TreatmentDetailsForm (forms.ModelForm):
             'price_c': 'Enter the price (optional)',
             'price_name_d': 'Enter price name (optional)',
             'price_d': 'Enter the price (optional)',
+            'price_name_e': 'Enter price name (optional)',
+            'price_e': 'Enter the price (optional)',
+            'price_name_f': 'Enter price name (optional)',
+            'price_f': 'Enter the price (optional)',
+            'price_name_g': 'Enter price name (optional)',
+            'price_g': 'Enter the price (optional)',
+            'price_name_h': 'Enter price name (optional)',
+            'price_h': 'Enter the price (optional)',
         } 
 
         for field in self.fields:
@@ -76,4 +92,12 @@ class TreatmentDetailsForm (forms.ModelForm):
             self.fields['price_c'].widget.attrs['class'] = 'field-styling'
             self.fields['price_name_d'].widget.attrs['class'] = 'field-styling'
             self.fields['price_d'].widget.attrs['class'] = 'field-styling'
+            self.fields['price_name_e'].widget.attrs['class'] = 'field-styling'
+            self.fields['price_e'].widget.attrs['class'] = 'field-styling'
+            self.fields['price_name_f'].widget.attrs['class'] = 'field-styling'
+            self.fields['price_f'].widget.attrs['class'] = 'field-styling'
+            self.fields['price_name_g'].widget.attrs['class'] = 'field-styling'
+            self.fields['price_g'].widget.attrs['class'] = 'field-styling'
+            self.fields['price_name_h'].widget.attrs['class'] = 'field-styling'
+            self.fields['price_h'].widget.attrs['class'] = 'field-styling'
 

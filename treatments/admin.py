@@ -22,6 +22,14 @@ class TreatmentsAdmin(admin.ModelAdmin):
         'price_c',
         'price_name_d',
         'price_d',
+        'price_name_e',
+        'price_e',
+        'price_name_f',
+        'price_f',
+        'price_name_g',
+        'price_g',
+        'price_name_h',
+        'price_h',
     )
 
 
