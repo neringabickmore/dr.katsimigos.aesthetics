@@ -2,6 +2,11 @@
 
 This project is designed for an Aesthetics doctor who provides various beauty treatments. The project is designed to allow the owner of the site to manage all content (Add, Delete, Modify Content) by logging in. Site visitors can only view the content and has no rights to edit it.
 
+## Set up workplace
+```mkdir .venv```
+```pipenv install -r requriements.txt```
+then: set up your ```env.py```
+
 ## Terminal commands to run project locally
 
 Activate virtual environment: ```.\.venv\Scripts\activate```
